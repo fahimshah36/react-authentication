@@ -1,25 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {ConfigProvider, theme} from "antd";
+import "./App.css";
+import AuthCard from "./components/AuthCard";
+import {useUserContext} from "./utils/context/userContext";
 
 function App() {
+  const {isLoading, error, user} = useUserContext();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: "#54d2bc",
+        },
+        algorithm: theme.darkAlgorithm,
+      }}
+    >
+      <div className="App">
+        <header className="App-header">
+          <AuthCard />
+        </header>
+      </div>
+    </ConfigProvider>
   );
 }
 
