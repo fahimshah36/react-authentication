@@ -11,11 +11,7 @@ import {
 import {auth} from "../../firebase/index";
 import {GlobalContent} from "../../types/contextTypes";
 
-const UserContext = createContext<GlobalContent>({
-  error: "",
-  isLoading: false,
-  user: null,
-});
+const UserContext = createContext<GlobalContent>({} as GlobalContent);
 
 export const useUserContext = () => useContext(UserContext);
 
@@ -40,6 +36,8 @@ export const UserContextProvider = ({
 
   //all functions here
   const registerUser = (email: string, userName: string, password: string) => {
+    console.log({email, userName, password});
+
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then(() => {

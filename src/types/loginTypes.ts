@@ -1,7 +1,10 @@
 export interface ILoginFormType {
-  username: string;
+  email: string;
   password: string;
 }
+
 export interface ISignupFormType extends ILoginFormType {
-  email: string;
+  username: string;
 }
+
+export interface IForgetPassword extends ISignupFormType {}
